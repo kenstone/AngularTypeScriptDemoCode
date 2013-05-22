@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "AngularTypeScriptDemo ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ApplicationName = "AngularDemo";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+@Scripts.Render("~/js/angularDemoScripts")
+
+<h2>Angular TypeScript Demo</h2>
+
+<div data-ng-controller="AngularDemo.Controller.DemoController">
+    
+    <div data-ng-view></div>
+
+</div>
+
