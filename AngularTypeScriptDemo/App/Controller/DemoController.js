@@ -12,6 +12,11 @@ var AngularDemo;
                     $location.path('/FullName');
                 };
             }
+            DemoController.$inject = [
+                '$scope', 
+                'fullNameService', 
+                '$location'
+            ];
             return DemoController;
         })();
         Controller.DemoController = DemoController;        

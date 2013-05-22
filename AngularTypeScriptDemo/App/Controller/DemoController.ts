@@ -11,6 +11,8 @@ module AngularDemo.Controller {
 
     export class DemoController {
 
+        static $inject = ['$scope', 'fullNameService', '$location'];
+
         constructor(private $scope: IDemoScope, private fullNameService: AngularDemo.Service.FullNameService, private $location: ng.ILocationService) {
 
             $scope.names = new AngularDemo.Model.NameModel();
