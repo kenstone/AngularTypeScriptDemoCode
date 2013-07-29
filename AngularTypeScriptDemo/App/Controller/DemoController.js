@@ -6,20 +6,18 @@ var AngularDemo;
                 this.$scope = $scope;
                 this.fullNameService = fullNameService;
                 this.$location = $location;
-                $scope.names = new AngularDemo.Model.NameModel();
-                $scope.getFullName = function () {
-                    $scope.names.fullName = fullNameService.getFullName($scope.names.firstName, $scope.names.lastName);
-                    $location.path('/FullName');
-                };
+                $scope.viewModel = this;
+
+                this.names = new AngularDemo.Model.NameModel();
             }
-            DemoController.$inject = [
-                '$scope', 
-                'fullNameService', 
-                '$location'
-            ];
+            DemoController.prototype.getFullName = function () {
+                this.names.fullName = this.fullNameService.getFullName(this.names.firstName, this.names.lastName);
+                this.$location.path('/FullName');
+            };
+            DemoController.$inject = ['$scope', 'fullNameService', '$location'];
             return DemoController;
         })();
-        Controller.DemoController = DemoController;        
+        Controller.DemoController = DemoController;
     })(AngularDemo.Controller || (AngularDemo.Controller = {}));
     var Controller = AngularDemo.Controller;
 })(AngularDemo || (AngularDemo = {}));

@@ -5,25 +5,30 @@
 module AngularDemo.Controller {
 
     export interface IDemoScope extends ng.IScope {
-        names: AngularDemo.Model.NameModel;
-        getFullName: Function;
+        viewModel: DemoController;
     }
 
-    export class DemoController {
+    export interface IDemoController {
+        names: AngularDemo.Model.NameModel;
+        getFullName();
+    }
+
+    export class DemoController implements IDemoController {
 
         static $inject = ['$scope', 'fullNameService', '$location'];
-
+        public names: AngularDemo.Model.NameModel;
+       
         constructor(private $scope: IDemoScope, private fullNameService: AngularDemo.Service.FullNameService, private $location: ng.ILocationService) {
 
-            $scope.names = new AngularDemo.Model.NameModel();
+            $scope.viewModel = this;
 
-            $scope.getFullName = () => {
+            this.names = new AngularDemo.Model.NameModel();
 
-                $scope.names.fullName = fullNameService.getFullName($scope.names.firstName, $scope.names.lastName);
+        }
 
-                $location.path('/FullName');
-            };
-
+        getFullName() {
+            this.names.fullName = this.fullNameService.getFullName(this.names.firstName, this.names.lastName);
+            this.$location.path('/FullName');
         }
 
     }

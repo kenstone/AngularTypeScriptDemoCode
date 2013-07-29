@@ -9,7 +9,7 @@ var AngularDemo;
             };
             return FullNameService;
         })();
-        Service.FullNameService = FullNameService;        
+        Service.FullNameService = FullNameService;
     })(AngularDemo.Service || (AngularDemo.Service = {}));
     var Service = AngularDemo.Service;
 })(AngularDemo || (AngularDemo = {}));
