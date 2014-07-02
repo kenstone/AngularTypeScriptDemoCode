@@ -1,4 +1,4 @@
-﻿var angularModule = angular.module('AngularDemo', ['ngRoute']);
+﻿var angularModule = angular.module('AngularDemo', []);
 
 angularModule.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', { templateUrl: './App/Partials/ViewOne.html' }).
